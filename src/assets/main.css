@@ -1,0 +1,9 @@
+@import './base.css';
+
+body {
+  padding: 4rem;
+}
+
+.shadow-form-1 {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
