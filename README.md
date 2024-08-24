@@ -1,39 +1,53 @@
-# country-vue
+# Country Vue App
 
-This template should help get you started developing with Vue 3 in Vite.
+## Descripción
 
-## Recommended IDE Setup
+Este proyecto es una aplicación CRUD para el servicio web [https://countries.trevorblades.com/](https://countries.trevorblades.com/). Utiliza GraphQL para mostrar información de países en una tabla que incluye los siguientes datos:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Nombre del país
+- Código de país
+- Capital
+- Continente
+- Moneda
 
-## Type Support for `.vue` Imports in TS
+La aplicación permite filtrar los países por nombre o código. Además, cuenta con una columna de acciones que permite ver el detalle de las provincias de un país, si es que el país tiene provincias.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+La aplicación está desarrollada utilizando la Composition API de Vue.js y se han implementado tests unitarios con Vitest.
 
-## Customize configuration
+## Instalación y Ejecución
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Para ejecutar la aplicación localmente, sigue estos pasos:
 
-## Project Setup
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/Ingcruzco/country-vue.git
+   ```
+2. Cambiar de carpeta:
+   ```bash
+   cd country-vue
+   ```
+3. Instala dependencias:
+   ```bash
+   npm install
+   ```
+4. Instala dependencias:
+   ```bash
+   npm install
+   ```
+5. Abre tu navegador y dirigete a http://localhost:5173/ para ver la aplicación en acción.
 
-```sh
+## Ejecución de Tests
+
+Para ejecutar los tests unitarios y generar un reporte de cobertura, utiliza el siguiente comando:
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Esto ejecutará los tests y generará un reporte de cobertura que te permitirá verificar la calidad y cobertura del código.
 
-```sh
-npm run dev
-```
+## Tecnologías
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- **Vue.js**: Utilizado con la Composition API para el desarrollo de la aplicación.
+- **GraphQL**: Para las consultas de datos del servicio web.
+- **Vitest**: Para las pruebas unitarias y cobertura de código.
