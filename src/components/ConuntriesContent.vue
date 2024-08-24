@@ -4,7 +4,7 @@
       <td scope="col">{{ country.name }}</td>
       <td scope="col">{{ country.code }}</td>
       <td scope="col">{{ country.capital }}</td>
-      <td scope="col">{{ country.continent.name }}</td>
+      <td scope="col">{{ country.continent?.name || '' }}</td>
       <td scope="col">{{ country.currency }}</td>
       <td scope="col"><ActionButton v-if="country.states.length > 0" :code="country.code" /></td>
     </tr>
@@ -58,5 +58,7 @@ watch(tableConfig.search, (newSearch: string, oldSearch: string) => {
 
 watch(dataFiltered, (countrieInfo) => store.setDataFiltered(countrieInfo))
 
-onMounted(() => (data.value = store.countries))
+onMounted(() => {
+  data.value = store.countries
+})
 </script>

@@ -23,13 +23,12 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-import { computed, inject, onBeforeUnmount, onMounted, provide, ref } from 'vue'
-import type { ICountry } from '@/types/country.interface'
 import DataTable from '@/components/DataTable.vue'
-import TABLE_CONFIG from '@/constants/table'
 import StateContent from '@/components/StateContent.vue'
+import TABLE_CONFIG from '@/constants/table'
 import { useCountryStore } from '@/stores/conuntryStore'
+import { computed, onMounted, provide } from 'vue'
+import { useRoute } from 'vue-router'
 
 const route = useRoute()
 

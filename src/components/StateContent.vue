@@ -18,7 +18,7 @@ const country = inject<Ref<ICountry>>('country')
 const dataFiltered = ref<ICountry['states']>([])
 
 watchEffect(() => {
-  dataFiltered.value = country?.value.states ?? []
+  dataFiltered.value = country?.value?.states ?? []
 })
 
 const tableConfig = inject<IProviderDataTable>('tableStatus')!
@@ -36,10 +36,10 @@ const states = computed<ICountry['states']>(() => {
 watch(tableConfig.search, (newSearch: string, oldSearch: string) => {
   if (newSearch !== oldSearch) {
     if (!newSearch.trim()) {
-      dataFiltered.value = [...(country?.value.states ?? [])]
+      dataFiltered.value = [...(country?.value?.states ?? [])]
       return
     }
-    dataFiltered.value = filterNames(country?.value.states ?? [], newSearch)
+    dataFiltered.value = filterNames(country?.value?.states ?? [], newSearch)
   }
 })
 watch(

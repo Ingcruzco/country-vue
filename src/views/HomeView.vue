@@ -11,7 +11,7 @@
         <li class="list-group-item">{{ country.code }}</li>
         <li class="list-group-item">{{ country.name }}</li>
         <li class="list-group-item">{{ country.capital }}</li>
-        <li class="list-group-item">{{ country.continent.name }}</li>
+        <li class="list-group-item">{{ country.continent?.name || '' }}</li>
         <li class="list-group-item">{{ country.currency }}</li>
         <li class="list-group-item">
           <td scope="col" v-if="country.states.length > 0">
@@ -33,7 +33,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 const store = useCountryStore()
 
-const total = computed(() => store.dataFilered.length)
+const total = computed(() => store.dataFilered?.length ?? 0)
 
 const responsive = ref(false)
 
