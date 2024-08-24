@@ -1,85 +1,68 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <BackgroundCanvas />
+  <ButtonBack />
+  <div class="title-container">
+    <h1 class="title">Country App</h1>
+  </div>
+  <br />
+  <RouterView v-if="!store.loading" />
+  <SpinnerCircular />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import ButtonBack from './components/ButtonBack.vue'
+import { onMounted, ref, watch } from 'vue'
+import { fetchData } from './services/country.service'
+import type { ICountry } from './types/country.interface'
+import { useCountryStore } from './stores/conuntryStore'
+import SpinnerCircular from './components/SpinnerCircular.vue'
+import BackgroundCanvas from './components/BackgroundCanvas.vue'
+const store = useCountryStore()
+
+const data = ref<ICountry[]>([])
+
+watch(data, () => store.setCountries(data.value ?? []))
+
+onMounted(async () => {
+  store.setLoading(true)
+
+  fetchData()
+    .then((res) => {
+      data.value = res
+    })
+    .catch(() => {
+      data.value = []
+    })
+    .finally(() => {
+      store.setLoading(false)
+    })
+})
+</script>
+
+<style>
+body {
+  padding: 2.5rem;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
+.title-container {
   text-align: center;
-  margin-top: 2rem;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
+.title {
+  font-size: 4em;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0.5em;
+  border-bottom: 2px solid #333;
   display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
 }
 
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.title:hover {
+  color: #000;
+  border-bottom: 2px solid #000;
 }
 </style>
