@@ -41,7 +41,7 @@ Para ejecutar la aplicación localmente, sigue estos pasos:
 Para ejecutar los tests unitarios y generar un reporte de cobertura, utiliza el siguiente comando:
 
 ```bash
-npm install
+npm run test
 ```
 
 Esto ejecutará los tests y generará un reporte de cobertura que te permitirá verificar la calidad y cobertura del código.
