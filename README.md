@@ -30,9 +30,9 @@ Para ejecutar la aplicación localmente, sigue estos pasos:
    ```bash
    npm install
    ```
-4. Instala dependencias:
+4. Ejecuta la aplicación:
    ```bash
-   npm install
+   npm run dev
    ```
 5. Abre tu navegador y dirigete a http://localhost:5173/ para ver la aplicación en acción.
 
